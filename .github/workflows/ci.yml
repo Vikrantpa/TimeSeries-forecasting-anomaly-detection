@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Unit tests (Kalman filter, shrinkage, pinball loss, detectors, ensemble)
+        run: python -m pytest -q
+
+      - name: Generate sample data
+        run: |
+          python -m src.forecasting.generate_demand_data --seed 11
+          python -m src.anomaly_detection.generate_sensor_data --seed 5
+
+      - name: Run both pipelines end-to-end
+        run: |
+          python -m src.forecasting.evaluate_forecasts
+          python -m src.anomaly_detection.evaluate_detection
+
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: outputs
+          path: outputs/

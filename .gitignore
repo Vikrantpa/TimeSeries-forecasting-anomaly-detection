@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+*.egg-info/
+
+# generated at runtime — sample data in data/ is intentionally committed, this is not
+outputs/forecasting/*
+!outputs/forecasting/.gitkeep
+outputs/anomaly_detection/*
+!outputs/anomaly_detection/.gitkeep

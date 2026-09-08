@@ -1,0 +1,30 @@
+{
+  "n_hours": 1440,
+  "machines": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+  ],
+  "faulty_machines": {
+    "M3": {
+      "fault_start_hour": 620,
+      "failure_hour": 860
+    },
+    "M5": {
+      "fault_start_hour": 940,
+      "failure_hour": 1120
+    }
+  },
+  "healthy_training_window_hours": 400,
+  "sensors": [
+    "temperature",
+    "vibration_rms",
+    "pressure",
+    "current_draw",
+    "rotation_speed"
+  ],
+  "seed": 5
+}

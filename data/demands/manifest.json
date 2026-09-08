@@ -1,0 +1,18 @@
+{
+  "n_days": 700,
+  "test_horizon": 28,
+  "stores": [
+    "S1",
+    "S2",
+    "S3",
+    "S4",
+    "S5"
+  ],
+  "products": [
+    "P1",
+    "P2"
+  ],
+  "new_store": "S5",
+  "new_store_start_day": 655,
+  "seed": 11
+}
